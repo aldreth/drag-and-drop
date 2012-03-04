@@ -1,15 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @article.name %>
+  <h1>
+    <%= image_tag @article.image %>
+    <%= @article.name %>
+  </h1>
 </p>
 
 <p>
-  <b>Body:</b>
   <%= @article.body %>
 </p>
 
+<p>
+</p>
+
+<%= render 'show_child_articles' unless @children.empty? %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

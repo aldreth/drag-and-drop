@@ -7,12 +7,14 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @articles.each do |article| %>
   <tr>
     <td><%= article.name %></td>
     <td><%= article.body %></td>
+    <td><%= image_tag article.image %></td>
     <td><%= link_to 'Show', article %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
     <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
@@ -22,8 +24,6 @@
 
 <br />
 
-<%= link_to 'New Article', new_article_path %><br /><br />
-<%= link_to 'Create A New Article called Edward', articles_path(:article => {:name => "Edward"}), :method => :post %>
-<%= link_to 'Change name of article id 1', article_path(:id => 1, :article => {:name => "new name"}), :method => :put %>
+<%= link_to 'New Article', new_article_path %>
 
 

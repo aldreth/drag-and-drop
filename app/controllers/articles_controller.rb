@@ -14,8 +14,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
-    # @article = Article.find(params[:name])
-
+    @children = @article.children
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,12 +30,15 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @article }
+      @children = @article.children
     end
   end
 
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+    @articles = Article.all
+    @children = @article.children
   end
 
   # POST /articles
