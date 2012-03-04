@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20120304112520) do
   create_table "articles", :force => true do |t|
     t.string   "name"
     t.string   "body"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
   end
 
   create_table "links", :force => true do |t|

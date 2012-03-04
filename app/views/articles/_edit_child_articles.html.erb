@@ -1,0 +1,12 @@
+<div id="edit-article-children">
+  <h2>You might also like...</h2>
+  <% if @child_links %>
+    <% @child_links.each do |child_link| %>
+      <%= link_to (image_tag "delete.png"), link_path(child_link), method: :delete, class: "delete-child_link", remote: true %>
+      <%= link_to (image_tag Article.find(child_link.child_id).image), Article.find(child_link.child_id) %>
+    <%end%>
+  <%end%>
+  <%= image_tag "placeholder.png", class: "this_is_droppable", id: @article.id %>
+</div>
+  <%= render 'all_articles' %>
+</div>

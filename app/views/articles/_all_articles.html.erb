@@ -1,0 +1,6 @@
+<div id="all-articles">
+  <h2>All articles</h2>
+  <% @articles.each do |article| %>
+    <%= image_tag article.image, class: "this_is_draggable", id: article.id %>
+  <%end%>
+</div>

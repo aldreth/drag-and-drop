@@ -44,7 +44,6 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.js { head :ok }
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render json: @link, status: :created, location: @link }
       else
@@ -77,6 +76,7 @@ class LinksController < ApplicationController
     @link.destroy
 
     respond_to do |format|
+      format.js { head :ok }
       format.html { redirect_to links_url }
       format.json { head :ok }
     end

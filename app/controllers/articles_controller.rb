@@ -39,6 +39,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @articles = Article.all
     @children = @article.children
+    @child_links = @article.child_links
   end
 
   # POST /articles
