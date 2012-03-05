@@ -4,7 +4,9 @@ $(function() {
 
   function make_draggable_and_droppable_and_deletable() {
     $('.this_is_draggable').draggable({
-          helper: 'clone'
+          helper: 'clone',
+          snap: '.this_is_droppable',
+          cursor: 'move'
     });
     $('.this_is_droppable').droppable( {
           drop: drop_article
