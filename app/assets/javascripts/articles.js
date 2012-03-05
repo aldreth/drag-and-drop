@@ -1,27 +1,26 @@
-$(document).ready(function() {
-    
-  $( make_draggable_and_droppable() );
-  $( "delete-child_link" ).click(function() {
-    console.log('delete');
-    refresh();
-    make_draggable_and_droppable();
-  });
+$(function() {
 
-  function refresh() {
-      $("#edit-article-children").load(location.href+" #edit-article-children>*");
-  }
-   
-  function make_draggable_and_droppable() {
+  $( make_draggable_and_droppable_and_deletable() );
+
+  function make_draggable_and_droppable_and_deletable() {
     $('.this_is_draggable').draggable({
           helper: 'clone'
     });
     $('.this_is_droppable').droppable( {
           drop: drop_article
-    } );
-    console.log('drag drop');
+    });
+    $(".delete-child_link").click(function() {
+          deleteChildArticle(this.id);
+    }); 
   }
-   
-  function drop_article( event, ui ) {
+
+  function refresh() {
+      $("#edit-article-children").load(location.href+" #edit-article-children>*", function (){
+          make_draggable_and_droppable_and_deletable();
+      });
+    }
+
+  function drop_article(event,ui) {
     createChildArticle( this.id, ui.draggable.attr('id') );
   }
 
@@ -37,17 +36,25 @@ $(document).ready(function() {
           datatype: "script",
           remote: "true",  
           success: function(){
-            console.log('here');
-            on_success();
+            refresh();
           }     
     });
   }
 
-  function on_success() {
-    console.log('success');
-    refresh();
-    make_draggable_and_droppable();
-  }
-
+  function deleteChildArticle( ChildArticleID ){
+    $.ajax({
+          type: "DELETE",
+          url:  "/links/" + ChildArticleID,
+          data: {link : {
+                              id : ChildArticleID
+                                          }
+                },
+          datatype: "script",
+          remote: "true",  
+          success: function(){
+            refresh();
+          }  
+  });
+}
 //closing document ready tag
 });
