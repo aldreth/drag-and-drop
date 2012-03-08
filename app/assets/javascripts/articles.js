@@ -11,9 +11,9 @@ $(function() {
     $('.this_is_droppable').droppable( {
           drop: drop_article
     });
-    $(".delete-child_link").click(function() {
-          deleteChildArticle(this.id);
-    }); 
+    $(".delete-child-link").on('ajax:success', function(){
+          refresh();
+    });
   }
 
   function refresh() {
@@ -42,21 +42,5 @@ $(function() {
           }     
     });
   }
-
-  function deleteChildArticle( ChildArticleID ){
-    $.ajax({
-          type: "DELETE",
-          url:  "/links/" + ChildArticleID,
-          data: {link : {
-                              id : ChildArticleID
-                                          }
-                },
-          datatype: "script",
-          remote: "true",  
-          success: function(){
-            refresh();
-          }  
-  });
-}
 //closing document ready tag
 });

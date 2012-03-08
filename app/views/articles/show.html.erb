@@ -14,7 +14,11 @@
 <p>
 </p>
 
-<%= render 'show_child_articles' unless @children.empty? %>
-
+<% unless @children.empty? %>
+<div id="article-children">
+  <h2>You might also like...</h2>
+  <%= render partial: @article.children, locals: {in_edit: false} %>
+</div>
+<% end %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

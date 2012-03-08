@@ -1,7 +1,13 @@
 <h1>Editing article</h1>
 
 <%= render 'form' %>
-<%= render 'edit_child_articles' %>
+<div id="edit-article-children">
+  <h2>You might also like...</h2>
+  <%= render @article.child_links if @child_links %>
+  <%= image_tag "placeholder.png", class: "this_is_droppable", id: @article.id, size: "80x80" %>
+</div>
+  <%= render partial: @articles, locals: {in_edit: true} %>
+</div>
 
 <%= link_to 'Show', @article %> |
 <%= link_to 'Back', articles_path %>
