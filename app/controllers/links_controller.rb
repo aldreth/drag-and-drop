@@ -77,9 +77,9 @@ class LinksController < ApplicationController
     @link.destroy
 
     respond_to do |format|
-      format.js { head :ok }
       format.html { redirect_to links_url }
       format.json { head :ok }
+      format.js { head :ok }
     end
   end
 end

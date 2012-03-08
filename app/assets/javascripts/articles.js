@@ -11,32 +11,27 @@ $(function() {
     $('.this_is_droppable').droppable( {
           drop: drop_article
     });
-    $(".delete-child-link").on('ajax:success', function(){
+    $('.delete-child-link').on('ajax:success', function(){
           refresh();
     });
   }
 
   function refresh() {
-      $("#edit-article-children").load(location.href+" #edit-article-children>*", function (){
+      $('#edit-article-children').load(location.href+' #edit-article-children>*', function (){
           make_draggable_and_droppable_and_deletable();
       });
     }
 
   function drop_article(event,ui) {
-    createChildArticle( this.id, ui.draggable.attr('id') );
-  }
-
-  function createChildArticle( parent_id, child_id ) {
     $.ajax({
-          type: "POST",
-          url:    "/links/",
+          type: 'POST',
+          url:    '/links/',
           data: {link : {
-                          parent_id : parent_id,
-                          child_id : child_id
+                          parent_id : this.id,
+                          child_id : ui.draggable.attr('id')
                         }
                 },
-          datatype: "script",
-          remote: "true",  
+          remote: 'true',  
           success: function(){
             refresh();
           }     
