@@ -11,5 +11,8 @@ img {
   background-color: transparent;
 }
 #child-links li {
-  display: inline-block;
+  display: inline;
+}
+.ui-effects-wrapper {
+  display: inline !important;
 }

@@ -1,4 +1,4 @@
-// Works, but is dull!
-$('#link_<%= @link.id %>').hide();
-// Below would be nice, but it breaks the block-inline and the placeholder drops down
+// This doesn't quite work as if you delete a link in the middle of the list, the others don't move
+// Also the placeholder doesn't move across, but slides into it's original place and then jumps
+$("#droppable-li").show("slide", { direction: "right" }, 1000);
 $('#link_<%= @link.id %>').hide("drop", { direction: "left" }, 1000);
