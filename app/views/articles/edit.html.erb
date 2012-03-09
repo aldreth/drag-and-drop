@@ -3,11 +3,17 @@
 <%= render 'form' %>
 <div id="edit-article-children">
   <h2>You might also like...</h2>
-  <%= render @article.child_links if @child_links %>
-  <%= image_tag "placeholder.png", class: "this_is_droppable", id: @article.id, size: "80x80" %>
+  <ul id="child-links" >
+    <%= render @article.child_links if @child_links %>
+    <li id="droppable-li">
+      <%= image_tag "placeholder.png", class: "this_is_droppable", id: @article.id, size: "80x80" %>
+    </li>
+  </ul>
 </div>
+<div id="all-articles">
   <%= render partial: @articles, locals: {in_edit: true} %>
 </div>
+
 
 <%= link_to 'Show', @article %> |
 <%= link_to 'Back', articles_path %>

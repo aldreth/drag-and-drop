@@ -2,6 +2,17 @@ $(function() {
 
   $( make_draggable_and_droppable_and_deletable() );
 
+// You can do this if you put
+// format.js { head :ok }
+// in the delete part of the controller
+// But you must just have
+// format.js
+// for delete.js.erb
+// to be called
+  // $('.delete-child-link').on('ajax:success', function(){
+  //   console.log('ajax:success in articles.js')
+  // });
+
   function make_draggable_and_droppable_and_deletable() {
     $('.this_is_draggable').draggable({
           helper: 'clone',
@@ -11,16 +22,7 @@ $(function() {
     $('.this_is_droppable').droppable( {
           drop: drop_article
     });
-    $('.delete-child-link').on('ajax:success', function(){
-          refresh();
-    });
   }
-
-  function refresh() {
-      $('#edit-article-children').load(location.href+' #edit-article-children>*', function (){
-          make_draggable_and_droppable_and_deletable();
-      });
-    }
 
   function drop_article(event,ui) {
     $.ajax({
@@ -33,7 +35,6 @@ $(function() {
                 },
           remote: 'true',  
           success: function(){
-            refresh();
           }     
     });
   }

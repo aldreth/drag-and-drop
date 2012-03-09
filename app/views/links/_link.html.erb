@@ -1,3 +1,4 @@
-      <%#= image_tag "delete.png", class: "delete-child_link", id: link.id %>
+<%= content_tag_for(:li, link) do %>
       <%= link_to (image_tag "delete.png"), link, method: :delete, remote: :true, class: 'delete-child-link' %>
       <%= link_to (image_tag Article.find(link.child_id).image, size: "80x80"), Article.find(link.child_id) %>
+<% end %>

@@ -1,0 +1,4 @@
+// Works, but is dull!
+$('#link_<%= @link.id %>').hide();
+// Below would be nice, but it breaks the block-inline and the placeholder drops down
+$('#link_<%= @link.id %>').hide("drop", { direction: "left" }, 1000);

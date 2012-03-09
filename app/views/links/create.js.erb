@@ -1,0 +1,6 @@
+// Works, but is dull!
+// $("#droppable-li").before("<%= escape_javascript(render(@link)) %>")
+// Below would be nice, but it breaks the block-inline and the placeholder drops down
+$('#link_<%= @link.id %>').hide();
+$("#droppable-li").before("<%= escape_javascript(render(@link)) %>")
+$('#link_<%= @link.id %>').show("drop", { direction: "left" }, 1000);
