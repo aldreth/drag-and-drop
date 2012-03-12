@@ -1,6 +1,6 @@
 $(function() {
 
-  $( make_draggable_and_droppable_and_deletable() );
+  $( make_draggable_and_droppable_and_sortable() );
 
 // You can do this if you put
 // format.js { head :ok }
@@ -13,7 +13,7 @@ $(function() {
   //   console.log('ajax:success in articles.js')
   // });
 
-  function make_draggable_and_droppable_and_deletable() {
+  function make_draggable_and_droppable_and_sortable() {
     $('.this_is_draggable').draggable({
           helper: 'clone',
           snap: '.this_is_droppable',
@@ -22,6 +22,7 @@ $(function() {
     $('.this_is_droppable').droppable( {
           drop: drop_article
     });
+    $( ".link" ).sortable();
   }
 
   function drop_article(event,ui) {
@@ -33,6 +34,7 @@ $(function() {
                           child_id : ui.draggable.attr('id')
                         }
                 },
+          dataType: 'script',
           remote: 'true',  
           success: function(){
           }     
