@@ -1,44 +1,33 @@
 $(function() {
 
-  $( make_draggable_and_droppable_and_sortable() );
+  $( make_draggable_and_droppable() );
 
-// You can do this if you put
-// format.js { head :ok }
-// in the delete part of the controller
-// But you must just have
-// format.js
-// for delete.js.erb
-// to be called
-  // $('.delete-child-link').on('ajax:success', function(){
-  //   console.log('ajax:success in articles.js')
-  // });
-
-  function make_draggable_and_droppable_and_sortable() {
+  function make_draggable_and_droppable() {
     $('.this_is_draggable').draggable({
-          helper: 'clone',
-          snap: '.this_is_droppable',
-          cursor: 'move'
+      helper: 'clone',
+      snap: '.this_is_droppable',
+      cursor: 'move'
     });
+
     $('.this_is_droppable').droppable( {
-          drop: drop_article
+      drop: drop_article
     });
-    $( ".link" ).sortable();
   }
 
   function drop_article(event,ui) {
     $.ajax({
-          type: 'POST',
-          url:    '/links/',
-          data: {link : {
-                          parent_id : this.id,
-                          child_id : ui.draggable.attr('id')
-                        }
-                },
-          dataType: 'script',
-          remote: 'true',  
-          success: function(){
-          }     
-    });
+      type: 'POST',
+      url:    '/links/',
+      data: {link : {
+        parent_id : this.id,
+        child_id : ui.draggable.attr('id')
+      }
+    },
+    dataType: 'script',
+    remote: 'true',
+    success: function(){
+    }
+  });
   }
 //closing document ready tag
 });
