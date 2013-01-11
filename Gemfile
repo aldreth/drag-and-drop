@@ -6,7 +6,7 @@ gem 'rails', '~> 3.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 group :production do
-  # gem 'pg'
+  gem 'pg'
 end
 
 group :development, :test do
@@ -19,6 +19,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer', :platforms => :ruby
+
 end
 
 gem 'jquery-rails'
