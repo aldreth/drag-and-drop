@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20120304112520) do
   create_table "articles", :force => true do |t|
     t.string   "name"
     t.string   "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "image"
   end
 
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20120304112520) do
     t.integer  "parent_id"
     t.integer  "child_id"
     t.integer  "weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
